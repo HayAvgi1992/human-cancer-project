@@ -1,6 +1,6 @@
 # Google App Engine generated folder
 appengine-generated/
 .vscode/
-.dockerfile
+# .dockerfile
 .Pipfile.lock
 requirements.txt

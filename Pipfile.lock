@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "adde8a7d5cfb21874ab5990863b66d22388740f67ef3e9dea28713c498f7167f"
+            "sha256": "60f75dd71666821c63c9c24e4ad05119a39b44b8a8bc43b78875a594c71598ee"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -15,7 +15,24 @@
             }
         ]
     },
-    "default": {},
+    "default": {
+        "load-dotenv": {
+            "hashes": [
+                "sha256:614803f720153fb8a5f97124a72aaa3930a67aa5547cbe8603d01ea7f9ac1adf",
+                "sha256:bbe5f40072d4a61eadca66de6c222df5a2d935d6d41b703be1ff75396f635145"
+            ],
+            "index": "pypi",
+            "version": "==0.1.0"
+        },
+        "python-dotenv": {
+            "hashes": [
+                "sha256:a8df96034aae6d2d50a4ebe8216326c61c3eb64836776504fcca410e5937a3ba",
+                "sha256:f5971a9226b701070a4bf2c38c89e5a3f0d64de8debda981d1db98583009122a"
+            ],
+            "index": "pypi",
+            "version": "==1.0.0"
+        }
+    },
     "develop": {
         "astroid": {
             "hashes": [
