@@ -1,6 +1,23 @@
-runtime: python
-vm: true
-enrtypoint: gunicorn -b :$PORT main:app
+runtime: custom # python
+
+env: flex # for Google Cloud Flexible App Engine
+entrypoint: gunicorn -b :$PORT main:app # specific to a GUnicorn HTTP server deployment
+
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+
+# handlers:
+#   - url: /static
+#   static_dir: static
 
 runtime_config:
-  python_version: 3
+  python_version: 3.11 # enter your Python version BASE ONLY here. Enter 2 for 2.7.9 or 3 for 3.6.4
+  # runtime_version: "3.11"
+  # operating_system: "ubuntu22"
+
+# any environment variables you want to pass to your application.
+# accessible through os.environ['VARIABLE_NAME']
+env_variables:
+  OpenAlexBase: "https://api.openalex.org/works/"
+  DOIBase: "https://doi.org/10.7717/peerj.4375"
