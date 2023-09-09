@@ -1,17 +1,16 @@
 FROM python:3.11-bullseye
+USER root
 
-# USER root
 # Install custom linux packages
 # RUN apt-get update -y && apt-get install sudo -y && apt-get install vim -y
 RUN apt update -y
 RUN apt install sudo -y
 RUN apt install vim -y
-# RUN apt-get install sudo
 
-RUN pip3 install virtualenv
 
 # Create a virtualenv for dependencies. This isolates these packages from
 # system-level packages.
+RUN pip3 install virtualenv
 RUN virtualenv /env -p python3
 
 # Setting these environment variables are the same as running
@@ -21,11 +20,14 @@ ENV PATH /env/bin:$PATH
 
 # Add the application source code and install all dependencies into the virtualenv
 ADD . /human-cancer-project
-RUN pip install -r /human-cancer-project/requirements.txt
+
+# configure bashrc file
+RUN cat /human-cancer-project/scripts/bashrc >> /root/.bashrc
+CMD source /root/.bashrc
+RUN pip3 install -r /human-cancer-project/requirements.txt
 
 # Make execute a script
-# RUN chmod 777 createBqDataSet.sh
-RUN chmod +x createBqDataSet.sh
+RUN chmod +x /human-cancer-project/scripts/createBqDataSet.sh
 RUN mkdir /root/googleCli
 
 # Run a WSGI server to serve the application.
